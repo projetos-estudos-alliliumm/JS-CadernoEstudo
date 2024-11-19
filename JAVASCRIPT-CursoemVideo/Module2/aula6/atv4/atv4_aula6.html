@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamento de Dados Pt2</title>
+    <style>
+        body{
+            background-color: black;
+            color:aliceblue;
+            font: normal 20pt Arial;
+        }
+        h1{
+            color:blueviolet;
+        }
+
+        /*Parágrafo em azul*/
+        p{
+            color: blue;
+        }
+    
+    </style>
+
+</head>
+<body>
+
+    <!--Atividade para entender Javascript-->
+    <h1>Tratamento de Dados Pt2</h1>
+    <p>Esta é a primeira aula de javascript básico para revisão, tratamento de dados através de variáveis</p>
+
+    <script>
+
+        var nome = window.prompt('Digite o seu nome:');
+
+        //Quantidade de caracteres/ Maiusculo, Minusculo
+        document.write(`O seu nome é ${nome} e tem ${nome.length} caracteres,<br/> 
+        colocando todos os caracteres em Maiúsculo fica dessa maneira: ${nome.toUpperCase()},<br/>
+        colocando todos os caracteres em Minúsculo fica dessa maneira: ${nome.toLowerCase()} <br/>`);
+
+    </script>
+
+
+</body>
+</html>

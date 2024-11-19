@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Jogo de Adivinhação</title>
+    <style>
+        body{
+            background: rgb(254, 227, 192);
+            font: normal 15pt Times;
+        }
+
+        header{
+            text-align: center;
+        }
+
+        section{
+            padding: 15px;
+
+        }
+
+        .campo{
+            padding: 8px;
+            text-align: center;
+        }
+
+        main{
+            background: white;
+            border-radius: 25px;
+            width: 500px;
+            margin: auto;
+            
+        }
+
+        footer{
+            text-align: center;
+            background:rgba(224, 183, 129, 0.49);
+        }
+
+        #envioPalpite{
+            margin-top: 5px;
+            padding: 10px;
+            border-radius: 15px;
+            border: none;
+            background: #fcc285;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jogo de Adivinhação</h1>
+    </header>
+    <main>
+        <section>
+            <div class="campo">
+                <label for="campoPalpite">Digite o seu palpite</label>
+                <input id="campoPalpite" name="campoPalpite" type="text">
+            </div>
+            <input id="envioPalpite" type="button" value="Enviar palpite">
+        </section>
+        <section>
+            <div class="resultadoParas">
+                <p class="palpites"></p>
+                <p class="ultimoResultado"></p>
+                <p class="baixoOuAlto"></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Lilians</p>
+    </footer>
+    <script>
+        var numeroAleatorio = Math.floor(Math.random() * 100) + 1; //Número Aleatório de 1 a 100
+        /*
+            Math.floor() -> retorna o possível maior número inteiro que é menor ou igual a um determinado número
+            Math.random() -> retorna um número aleatório entre 0 e 1 (sem 1) para semear a geração de números aleatórios
+            Multiplicado a 100 para gerar um número aleatório e 1 a 100, adicionando +1 para começar do 1
+        */
+
+        //Variável referentes aos parágrafos
+        var palpites = document.querySelector('.palpites')
+        var ultimoResultado = document.querySelector('.ultimoResultado')
+        var baixoOuAlto = document.querySelector('.baixoOuAlto')
+
+        //Variável do valor inserido
+        var campoPalpite = document.querySelector('input#campoPalpite')
+        //Enviar o palpite
+        var envioPalpite = document.querySelector('input#envioPalpite')
+
+        //Contagem de palpites
+        var contagemPalpites = 1;
+        //Botão de iniciar
+        var botaoReinicio;
+
+        function conferirPalpite(){
+            var palpiteUsuario = Number(campoPalpite.value);
+
+            contagemPalpites++; //contador de palpites
+            campoPalpite.value = '';
+            campoPalpite.focus();
+
+            if(contagemPalpites === 1){
+                palpites.textContent = 'Palpites anteriores: '; //Incluir o campo de palpites anteriores
+            }
+            palpites.textContent += palpiteUsuario + ' '; //Juntar
+
+            if(palpiteUsuario === numeroAleatorio){
+                ultimoResultado.textContent = 'Parabéns! Você acertou!';
+                ultimoResultado.style.backgroundColor = 'green';//cor da letra para verde (SUCESSO)
+                baixoOuAlto.textContent = '';
+                configFimDeJogo();
+            } else if (contagemPalpites === 10){
+                ultimoResultado.textContent = 'FIM DE JOGO!! Errou 10 vezes!'
+                baixoOuAlto.textContent = ''
+                configFimDeJogo();
+            } else {
+                ultimoResultado.textContent = 'Errado! Tente de novo!'
+                ultimoResultado.style.color = 'red';
+
+                if(palpiteUsuario < numeroAleatorio){
+                    baixoOuAlto.textContent = 'Seu palpite está baixo!';
+                } else if(palpiteUsuario > numeroAleatorio) {
+                    baixoOuAlto.textContent = 'Seu palpite está alto!';
+                }
+
+            }
+
+        }
+
+        envioPalpite.addEventListener('click', conferirPalpite);
+
+        function configFimDeJogo(){
+            campoPalpite.disabled = true;
+            envioPalpite.disabled = true;
+
+            botaoReinicio = document.createElement('button');
+            botaoReinicio.textContent = 'Iniciar um novo jogo'
+
+            document.body.appendChild(botaoReinicio); //Adicionar ao corpo HTML
+
+            botaoReinicio.addEventListener('click', reiniciarJogo);//Capturar evento de click o elemento
+        }
+
+        function reiniciarJogo(){
+            contagemPalpites = 1;
+
+            var reiniciarParas = document.querySelectorAll('.resultadoParas p');
+            
+            for(var i = 0; i < reiniciarParas.length; i++){
+                reiniciarParas[i].textContent = '';
+            } // Para fazer a limpa de conteudos através da quantidade de parágrafos existentes na div resultadoParas
+
+            botaoReinicio.parentNode.removeChild(botaoReinicio);
+            
+            campoPalpite.disabled = false;
+            envioPalpite.disabled = false;
+
+            campoPalpite.value = '';
+            campoPalpite.focus();// Colocar o cursor no campo de texto input para que possa começar já a digitar
+
+            ultimoResultado.style.color = 'black';
+
+            numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+        }
+
+    </script>
+</body>
+</html>

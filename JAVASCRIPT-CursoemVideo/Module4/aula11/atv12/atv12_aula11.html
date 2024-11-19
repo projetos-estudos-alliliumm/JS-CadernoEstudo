@@ -1,0 +1,35 @@
+,<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condições em JS</title>
+</head>
+<body>
+    <h1>Condição Composta</h1>
+    <h1>Estrangeiro ou Não?</h1>
+
+    Escreva o país que nasceu: <input name="paiss" id="pais">
+    <input type="button" value="Verificar" onclick="verificar()">
+
+    <div id="resp"></div>
+    
+    <script>
+        function verificar(){
+            var txt = window.document.querySelector('input#pais')
+            var resp = window.document.querySelector('div#resp')
+            var res = String(txt.value)
+
+            resp.innerHTML = `<p>Seu país atual é <strong>${res}</strong>!</p>`
+        
+            if(res == 'Brasil'){
+                resp.innerHTML += `<p>Você é brasileiro!</p>`
+            }else{
+                resp.innerHTML += `<p>Você é estrangeiro!</p>`
+            }
+        }
+    </script>
+    
+</body>
+</html>

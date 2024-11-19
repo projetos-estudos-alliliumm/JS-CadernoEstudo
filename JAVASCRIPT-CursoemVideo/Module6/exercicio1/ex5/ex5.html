@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador de Números</title>
+    <link rel="stylesheet" href="ex5.css">
+</head>
+<body>
+    <header>
+        <h1>Analisador de Números</h1>
+    </header>
+    <main>
+        <section>
+            <div class="numero">
+                <label for="numero">Número (entre 1 a 100):</label><br>
+                <input id="numero" type="number">
+                <button id="adicionar" onclick="log()">Adicionar</button>
+            </div>
+
+            <div class="resposta">
+                <label for="resposta">Log:</label><br>
+                <select name="resposta" id="resposta" size="10">
+                    <option>Adicione cinco valores</option>
+                </select>
+            </div>
+
+            <button id="finalizar" onclick="finalizar()">Finalizar</button>
+
+            <div class="paragrafos">
+                
+            </div>
+
+        </section>    
+    </main>
+    <footer>
+        <p>&copy; Lilian's</p>
+    </footer>
+    <script src="ex5-2.js"></script>
+</body>
+</html>

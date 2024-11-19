@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vamos contar</title>
+    <link rel="stylesheet" href="ex3.css">
+</head>
+<body> <!--Quando carregar-->
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    <section>
+
+        <div class="inicio">
+            <label for="inicio">Início: </label>
+            <input id="inicio" type="number">
+        </div>
+
+        <div class="fim">
+            <label for="fim">Fim: </label>
+            <input id="fim" type="number">
+        </div>
+        
+
+        <div class="passo">
+            <label for="passo">Passo: </label>
+            <input id="passo" type="number">
+        </div>
+
+        <button onclick="contar()">Contar</button>
+        
+
+        <div id="msg"></div>
+        <div id="msg1">Preparando a contagem...</div>
+
+    </section>
+    <footer>
+        <p>&copy; Lilian's</p>
+    </footer>
+    <script src="ex3.js"></script>
+</body>
+</html>

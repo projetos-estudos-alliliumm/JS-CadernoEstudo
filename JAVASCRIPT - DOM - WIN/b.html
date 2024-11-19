@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+        <title>BLOCKING BACK BUTTON USING JAVASCRIPT</title>
+
+        <script>
+            (function(window) { 
+                'use strict'; 
+                
+                var noback = { 
+                    
+                    //globals 
+                    version: '0.0.1', 
+                    history_api : typeof history.pushState !== 'undefined', 
+                    
+                    init:function(){ 
+                        window.location.hash = '#no-back'; 
+                        noback.configure(); 
+                    }, 
+                    
+                    hasChanged:function(){ 
+                        if (window.location.hash == '#no-back' ){ 
+                            window.location.hash = '#BLOQUEIO';
+                            //mostra mensagem que não pode usar o btn volta do browser
+                            // alert('Não poderá voltar')
+                        } 
+                    }, 
+                    
+                    checkCompat: function(){ 
+                        if(window.addEventListener) { 
+                            window.addEventListener("hashchange", noback.hasChanged, false); 
+                        }else if (window.attachEvent) { 
+                            window.attachEvent("onhashchange", noback.hasChanged); 
+                        }else{ 
+                            window.onhashchange = noback.hasChanged; 
+                        } 
+                    }, 
+                    
+                    configure: function(){ 
+                        if ( window.location.hash == '#no-back' ) { 
+                            if ( this.history_api ){ 
+                                history.pushState(null, '', '#BLOQUEIO'); 
+                            }else{  
+                                window.location.hash = '#BLOQUEIO';
+                                //mostra mensagem que não pode usar o btn volta do browser
+                                // alert('Não poderá voltar')
+                            } 
+                        } 
+                        noback.checkCompat(); 
+                        noback.hasChanged(); 
+                    } 
+                    
+                    }; 
+                    
+                    // AMD support 
+                    if (typeof define === 'function' && define.amd) { 
+                        define( function() { return noback; } ); 
+                    }  
+                    // For CommonJS and CommonJS-like 
+                    else if (typeof module === 'object' && module.exports) { 
+                        module.exports = noback; 
+                    }  
+                    else { 
+                        window.noback = noback; 
+                    } 
+                    noback.init();
+                }(window)); 
+        </script>
+    </head>
+
+    <body>
+        <h1>GeeksforGeeks</h1>
+
+        THis is seconde page
+        
+    </body>
+
+</html>

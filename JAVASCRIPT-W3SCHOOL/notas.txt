@@ -1,0 +1,146 @@
+Math:
+
+Math.E        // returns Euler's number
+Math.PI       // returns PI
+Math.SQRT2    // returns the square root of 2
+Math.SQRT1_2  // returns the square root of 1/2
+Math.LN2      // returns the natural logarithm of 2
+Math.LN10     // returns the natural logarithm of 10
+Math.LOG2E    // returns base 2 logarithm of E
+Math.LOG10E   // returns base 10 logarithm of E 
+
+Math.round(x)	Returns x rounded to its nearest integer
+Math.ceil(x)	Returns x rounded up to its nearest integer
+Math.floor(x)	Returns x rounded down to its nearest integer
+Math.trunc(x)	Returns the integer part of x (new in ES6)
+
+Math.min() and Math.max()
+
+Math.log()
+
+
+String "" /
+
+
+\' 	' 	Single quote
+\" 	" 	Double quote
+\\ 	\ 	Backslash
+
+"We are the so-called \"Vikings\" from the north."; = We are the so-called "Vikings" from the north.
+'It\'s alright.'; = 'It\'s alright.';
+"The character \\ is called backslash."; = The character \ is called backslash.
+
+
+    slice(start, end)
+    substring(start, end)
+    substr(start, length)
+
+
+let str = "Apple, Banana, Kiwi";
+let part = str.slice(7, 13);
+let part = str.slice(-12, -6);
+let part = str.slice(7);
+let part = str.slice(-12);
+
+let str = "Apple, Banana, Kiwi";
+let part = str.substring(7, 13);
+
+let str = "Apple, Banana, Kiwi";
+let part = str.substr(7, 6);
+let part = str.substr(7);
+let part = str.substr(-4); 
+
+let text = "Please visit Microsoft!";
+let newText = text.replace("Microsoft", "W3Schools");
+
+let text1 = "Hello";
+let text2 = "World";
+let text3 = text1.concat(" ", text2);
+text = "Hello" + " " + "World!";
+text = "Hello".concat(" ", "World!"); 
+
+let text = 'aaaaaa'
+text.search()]
+
+
+
+Módulos::
+
+Export
+
+Você pode exportar uma função ou variável de qualquer arquivo.
+
+Vamos criar um arquivo chamado person.js e preenchê-lo com as coisas que queremos exportar.
+
+Existem dois tipos de exportação: Nomeado e Padrão.
+
+Nomeada :
+
+export const name = 'Jesse'
+export const age = 40
+
+const name = 'jesse'
+const age = 40
+export{name, age}
+
+Padrão:
+
+Você só pode ter uma exportação padrão em um arquivo.
+
+const message = () => {
+const name = "Jesse";
+const age = 40;
+return name + ' is ' + age + 'years old.';
+};
+
+export default message;
+
+
+Import
+
+Você pode importar módulos para um arquivo de duas maneiras, com base no nome de exportação ou exportação padrão.
+
+As exportações nomeadas são construídas usando chaves. As exportações padrão não são.
+
+Nomeadas:
+
+import { name, age } from "./person.js";
+
+Padrão
+
+import message from "./message.js";
+
+
+Array ordem
+
+Ordem alfabetica
+const fruits = ["Uva","Maçã","Laranja"]
+fruits.sort()
+ou
+fruits.reverse()
+
+Ordem númerica
+const points = [40, 100, 1, 5, 25, 10]
+points.sort(function(a, b){return b - a}) Ordem Decrescente
+points.sort(function(a, b){return a - b}) Ordem Crescente
+
+
+
+This:
+
+A palavra-chave this se refere a objetos diferentes dependendo de como é usada:
+
+This in a Method
+
+Quando usado em um método de objeto, isso se refere ao objeto.
+No exemplo no topo desta página, isso se refere ao objeto pessoa.
+Porque o método fullName é um método do objeto pessoa.
+
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};

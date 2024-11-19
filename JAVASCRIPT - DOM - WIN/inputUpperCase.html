@@ -1,0 +1,26 @@
+<input type="text" id="text">
+
+<script>
+    //Método JS
+
+    document.getElementById('text').addEventListener('keyup', (ev) => {
+        const input = ev.target;
+        input.value = input.value.toUpperCase();
+    });
+
+</script>
+
+<script>
+    //Método JQUERY
+
+    $('#text').on('keyup', (ev) => {
+	    $('#text').val($('#text').val().toUpperCase());
+    });
+
+</script>
+
+<!-- OU para fins estéticos-->
+
+<input type="text" id="text" style="text-transform: uppercase">
+
+<!-- https://metring.com.br/javascript-texto-maiusculo-minusculo -->

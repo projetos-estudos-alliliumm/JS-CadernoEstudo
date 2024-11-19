@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Parte 1</title>
+    <style>
+        body{
+            background-color: rgb(16, 106, 133);
+            color:aliceblue;
+            font: normal 20pt Arial;
+        }
+        
+    
+    </style>
+
+</head>
+<body>
+
+    <!--Atividade para entender Javascript-->
+    <h1>Primeiros passos com DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>Aprendendo a utilizar o <strong>DOM</strong> em Javascript.</p>
+    <div id="msg" >Em ID : Clique em mim!</div>
+
+    <p>Modelo de objetos para documentos(Document Object Model). Todo site tem uma árvore DOM 
+        seguido de objetos como body que tem outros objetos como parágrafos, tags de script, tags h1, h2 ou h3 e etc.
+    </p>
+
+
+    <p>...</p>
+
+    <!--Modelo de objetos para documentos
+    //Window > raiz > objeto DOM
+    //Árvore DOM
+    //Document > objeto DOM > Child de Window > Window pai de document-->
+
+    <script>
+        window.document.write('Olá Mundo!');
+    </script>
+
+    <p>...</p>
+
+    <script>
+        window.document.write(window.document.charset);
+    </script>
+
+    <p>...</p>
+
+    <script>
+        window.document.write(window.navigator.appName);
+    </script>
+
+    <p>...</p>
+
+    <script>
+        window.document.write(window.document.URL); 
+    </script>
+
+
+    <p>...</p>
+
+        <!-- Método de acesso
+            1. Marca
+            2. ID
+            3. Nome
+            4. Classe
+            5. Seletor -->
+
+
+    <!-- Marca -->
+    <h2>Marca</h2>
+
+    <script>
+        var p1 = window.document.getElementsByTagName('p')[0]//primeiro parágrafo
+        window.document.write('Está escrito assim: ' + p1.innerText);//Escrever o texto que está no primeiro parágrafo
+        p1.style.color = 'blue';//Mudança de cor das letras da frase
+
+        //Mudar a cor de fundo pelo DOM
+        var corpo = window.document.body
+        corpo.style.background = 'black';
+    </script>
+
+    <p>...</p>
+
+    <script>
+        var p2 = window.document.getElementsByTagName('p')[1]
+        document.write('Escrito assim com innerText: ' + p2.innerText);
+    </script>
+
+    <p>...</p>
+
+    <script>
+        document.write('Escrito assim com innerHTML: ' + p2.innerHTML); 
+    </script>
+
+    <!-- ID -->
+    <h2>ID</h2>
+    <div id="msg6" >Em ID : Clique em mim!</div>
+
+    <script>
+        var d = window.document.getElementById('msg');
+        //var d = document...
+        d.style.background = 'green';
+        //d.innerText = 'Estou aguardando...';//Subscreve a frase
+        window.document.getElementById('msg').innerText = 'Olá';
+
+        var f = window.document.getElementById('msg6');
+        //var d = document...
+        f.style.background = 'green';
+        //d.innerText = 'Estou aguardando...';//Subscreve a frase
+        window.document.getElementById('msg6').innerText = 'Olá';
+    </script>
+
+    <p>...</p>
+
+    <script>
+        window.alert(p1.innerHTML);
+        window.alert(p2.innerHTML);
+        window.alert(p2.innerText);//Pega sem a formatação 
+    </script>
+
+
+    <!-- Nome -->
+    <h2>Nome</h2>
+
+    <div name="msg" >Em name : Clique em mim!</div>
+
+    <script>
+        var t = window.document.getElementsByName('msg')[0];
+        window.document.write('Escrito a mensagem novamente: ' + t.innerText);
+    </script>
+
+    <p>...</p>
+
+    <!-- Classe -->
+    <h2>Classe</h2>
+
+    <div class="msg2">Olha só!</div>
+    <div class="msg3">Olha só!</div>
+
+    <script>
+        var h = window.document.getElementsByClassName('msg2');
+        window.document.write('Escrito a mensagem olha: ' + h.innerText);
+    </script>
+
+    <p>...</p>
+
+    <script>
+        var h = window.document.getElementsByClassName('msg3');
+        window.document.write('Escrito a mensagem olha de novo: ' + h.innerText);
+    </script>
+
+    <!-- Seletor -->
+    <h2>Seletor</h2>
+
+    <div id="msg9">Oi!</div>
+
+    <script>
+        var a = window.document.querySelector('div#msg9');//# para id
+        window.document.write('Escrito com o seletor para id novamente: ' + a.innerText);
+    </script>
+
+    <p>...</p>
+
+    <div class="msg1">Olha só!</div>
+
+    <script>
+        var b = window.document.querySelector('div.msg1');// . para classe
+        window.document.write('Escrito com o seletor para classe novamente: ' + b.innerText);
+    </script>
+
+
+</body>
+</html>

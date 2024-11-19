@@ -1,0 +1,33 @@
+<!-- JS -->
+
+<input type="file" id="file">
+
+<script>
+    var uplouadField = document.getElementById("file");
+
+    uplouadField.onchange = function(){
+        if(this.files[0].size > 2200000){
+            alert("Insira os arquivos de tamanho menor que 2mb.");
+            this.value = "";
+        }
+    }
+</script>
+
+<!-- JQuery -->
+
+<div id="camada" style="width: 510px;">
+    <font color="#FF0000">*</font>
+    Documento <br />
+    <input type="file" name="TX_ID_DOC" id="TX_ID_DOC" accept=".pdf" style="width: 500px;" />
+</div>
+
+<script>
+$('input[name=TX_ID_DOC]').change(function(){
+    if(this.files[0].size>2200000){
+        alert("Não poderá incluir um arquivo com acima de 2mb")
+        this.value = "";
+    }
+});
+</script>
+
+<!-- Importante que tem que ser feita a validação também no servidor, o qual receberá os dados -->
